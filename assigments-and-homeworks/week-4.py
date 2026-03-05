@@ -18,9 +18,6 @@ try:
     while True:
         i2c.write_byte(ADC_address, (commands_per_channel[channel] << 4) | 0x04)
 
-        # возможно нужен dummy read (зависит от твоего ADC)
-        # i2c.read_byte(ADC_address)
-
         analog_value = i2c.read_byte(ADC_address)
         voltage = analog_value * 3.3 / 255
 
